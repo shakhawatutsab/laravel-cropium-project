@@ -24,7 +24,7 @@ class AlterEditsTable extends Migration
     {
         Schema::table('posts', function(Blueprint $table){
             $table ->dropColumn('content');
-            $table -> string('email_address');
+            $table -> dropColumn('email_address');
         });
     }
 };

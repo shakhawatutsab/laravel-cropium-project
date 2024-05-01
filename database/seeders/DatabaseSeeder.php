@@ -16,17 +16,10 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
 
-        for($i = 0; $i<10; $i++):
-        $posts = [
-            'firstname' => 'Sabbir Hossain',
-            'lastname' => Str::random(10),
-            'email_address' => 'sabbir2dev@gmail.com',
-            'content' => 'I am a professional wordpress developer',
-            'excerpt' => 'I am Sabbir Hossain Shawon. I am 29 years old'
-        ];
+        $this->call([
+            PostSeeder::class,
+            CategorySeeder::class
+        ]);
 
-        DB::table("posts")->insert($posts);
-
-    endfor;
     }
 }
