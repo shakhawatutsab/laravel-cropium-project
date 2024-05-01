@@ -5,7 +5,9 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use Faker\Factory;
 
 class CategorySeeder extends Seeder
 {
@@ -14,11 +16,13 @@ class CategorySeeder extends Seeder
      */
     public function run(): void
     {
-        for($i = 0; $i<15; $i++):
+
+        $faker = \Faker\Factory::create();
+        for($i = 0; $i<5; $i++):
             $category = [
-                'occupation' => Str::random(10),
-                'address' => 'sabbir2dev@gmail.com',
-                'excerpt' => 'I am Sabbir Hossain Shawon. I am 29 years old'
+                'occupation' => $faker->title(10),
+                'address' => $faker->freeEmail(),
+                'excerpt' => $faker->paragraph()
             ];
 
             DB::table("categories")->insert($category);

@@ -6,6 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
+use Faker\Factory;
 
 
 class PostSeeder extends Seeder
@@ -16,13 +17,16 @@ class PostSeeder extends Seeder
     public function run(): void
     {
 
+
+        $faker = Factory::create();
         for($i = 0; $i<5; $i++):
             $posts = [
-                'firstname' => 'Sabbir Hossain',
-                'lastname' => Str::random(10),
-                'email_address' => 'sabbir2dev@gmail.com',
-                'content' => 'I am a professional wordpress developer',
-                'excerpt' => 'I am Sabbir Hossain Shawon. I am 29 years old'
+                'firstname' => $faker->name(),
+                'lastname' => $faker->name(),
+                'email_address' => $faker->safeEmail(),
+                'content' => $faker->text(),
+                'excerpt' => $faker->text(),
+                'thumbnail'=> $faker->imageUrl(1000,600)
             ];
 
             DB::table("posts")->insert($posts);

@@ -14,6 +14,7 @@ class AlterEditsTable extends Migration
         Schema::table('posts', function(Blueprint $table){
             $table -> string('content')->after('excerpt');
             $table -> string('email_address')->after('lastname');
+            $table ->string('thumbnail')->after('content');
         });
     }
 
@@ -25,6 +26,7 @@ class AlterEditsTable extends Migration
         Schema::table('posts', function(Blueprint $table){
             $table ->dropColumn('content');
             $table -> dropColumn('email_address');
+            $table ->dropColumn('thumbnail');
         });
     }
 };
