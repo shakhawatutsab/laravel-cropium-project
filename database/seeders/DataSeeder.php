@@ -8,29 +8,22 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Faker\Factory;
 
-
-class PostSeeder extends Seeder
+class DataSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-
-
         $faker = Factory::create();
         for($i = 0; $i<5; $i++):
             $posts = [
-                'firstname' => $faker->FirstName(),
-                'lastname' => $faker->lastName(),
-                'email_address' => $faker->safeEmail(),
+                'title' => $faker->title(),
+                'thumbnail' => $faker->imageUrl(1000,80),
                 'content' => $faker->text(),
-                'excerpt' => $faker->text(),
-                'thumbnail'=> $faker->imageUrl(1000,600),
-                'title' => $faker->title()
+                'author' => $faker->text()
             ];
-
-            DB::table("posts")->insert($posts);
+            DB::table("datas")->insert($posts);
 
         endfor;
     }

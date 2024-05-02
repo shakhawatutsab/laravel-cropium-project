@@ -1,11 +1,22 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\DB;
 
 Route::get('/', function () {
-    return view('index');
+    return view ('index');
 });
 
+Route::get('/blog', function(){
+
+    $posts = DB::table('posts')->paginate(5);
+    // return $posts;
+    return view('blog', [
+        'posts' => $posts
+    ]);
+
+
+});
 
 Route::get('/insert-data', function(){
     $insert_data = DB::table('posts')->insert([
@@ -22,21 +33,13 @@ Route::get('/insert-data', function(){
 
 
 
-
-
-
-
-
-
-
-
 Route::get('/index', function () {
     return view('index');
 });
 
-Route::get('/blog', function(){
-    return view('blog');
-});
+// Route::get('/blog', function(){
+//     return view('blog');
+// });
 Route::get('/blog-details', function(){
     return view('blog-details');
 });

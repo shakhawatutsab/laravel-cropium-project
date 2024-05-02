@@ -118,68 +118,32 @@
     </section>
 
     <!-- Blog Area Starts -->
-    <div class="blog-area padding-120">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8">
-                    <article class="cropium-blog-item">
-                        <div class="blog-image">
-                            <img src="assets/images/blog-image-1.jpg" alt="">
-                            <div class="blog-date">
-                                <h5 class="title">14</h5>
-                                <span>oct</span>
+    @foreach ($posts as $post)
+        <div class="blog-area padding-120">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <article class="cropium-blog-item">
+                            <div class="blog-image">
+                                <img src="{{ $post->thumbnail }}" alt="">
+                                <div class="blog-date">
+                                    <h5 class="{{ $post->content }}">14</h5>
+                                    <span>oct</span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="blog-content">
-                            <div class="blog-meta">
-                                <ul>
-                                    <li><a href="#"><i class="fa fa-user-o"></i>john doe</a></li>
-                                    <li><a href="#"><i class="fa fa-bookmark-o"></i>creative, portfolio</a></li>
-                                </ul>
+                            <div class="blog-content">
+                                <div class="blog-meta">
+                                    <ul>
+                                        <li><a href="#"><i class="fa fa-user-o"></i>{{ $post->firstname }}</a></li>
+                                        <li><a href="#"><i class="fa fa-bookmark-o"></i>{{ $post->lastname }}</a></li>
+                                    </ul>
+                                </div>
+                                <h3 class="title"><a href="blog-details">{{ $post->id }} . {{ $post->title }}</a></h3>
+                                <p>{{ $post->excerpt }}</p>
                             </div>
-                            <h3 class="title"><a href="blog-details">learn web development</a></h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas labore reprehenderit natus nulla voluptatibus officiis similique laudantium maxime vitae numquam!</p>
-                        </div>
-                    </article>
-                    <article class="cropium-blog-item">
-                        <div class="blog-image">
-                            <img src="assets/images/blog-image-2.jpg" alt="">
-                            <div class="blog-date">
-                                <h5 class="title">14</h5>
-                                <span>oct</span>
-                            </div>
-                        </div>
-                        <div class="blog-content">
-                            <div class="blog-meta">
-                                <ul>
-                                    <li><a href="#"><i class="fa fa-user-o"></i>john doe</a></li>
-                                    <li><a href="#"><i class="fa fa-bookmark-o"></i>creative, portfolio</a></li>
-                                </ul>
-                            </div>
-                            <h3 class="title"><a href="blog-details">learn UX design</a></h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas labore reprehenderit natus nulla voluptatibus officiis similique laudantium maxime vitae numquam!</p>
-                        </div>
-                    </article>
-                    <article class="cropium-blog-item">
-                        <div class="blog-image">
-                            <img src="assets/images/blog-image-3.jpg" alt="">
-                            <div class="blog-date">
-                                <h5 class="title">14</h5>
-                                <span>oct</span>
-                            </div>
-                        </div>
-                        <div class="blog-content">
-                            <div class="blog-meta">
-                                <ul>
-                                    <li><a href="#"><i class="fa fa-user-o"></i>john doe</a></li>
-                                    <li><a href="#"><i class="fa fa-bookmark-o"></i>creative, portfolio</a></li>
-                                </ul>
-                            </div>
-                            <h3 class="title"><a href="blog-details">latest news of WordPress</a></h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas labore reprehenderit natus nulla voluptatibus officiis similique laudantium maxime vitae numquam!</p>
-                        </div>
-                    </article>
-                </div>
+                        </article>
+                    </div>
+    @endforeach
                 <!-- Blog Sidebar Starts -->
                 <div class="col-lg-4">
                     <aside class="widget-area sidebar">
@@ -270,12 +234,9 @@
             <div class="row order-md-1">
                 <div class="col-lg-12">
                     <div class="cropium-blog-pagination">
-                        <ul>
-                            <li><i class="fa fa-angle-left"></i></li>
-                            <li class="active"><span>1</span></li>
-                            <li><span>2</span></li>
-                            <li><i class="fa fa-angle-right"></i></li>
-                        </ul>
+
+                        {{-- {{ $posts->links('vendor.pagination.bootstrap-5') }} --}}
+                        {{ $posts->links('vendor.pagination.bootstrap-5') }}
                     </div>
                 </div>
             </div>

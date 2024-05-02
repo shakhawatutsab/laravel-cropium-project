@@ -15,6 +15,7 @@ class AlterEditsTable extends Migration
             $table -> string('content')->after('excerpt');
             $table -> string('email_address')->after('lastname');
             $table ->string('thumbnail')->after('content');
+            $table ->string('title')->after('thumbnail');
         });
     }
 
@@ -27,6 +28,7 @@ class AlterEditsTable extends Migration
             $table ->dropColumn('content');
             $table -> dropColumn('email_address');
             $table ->dropColumn('thumbnail');
+            $table ->dropColumn('title');
         });
     }
 };
