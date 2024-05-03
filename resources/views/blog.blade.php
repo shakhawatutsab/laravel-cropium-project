@@ -127,8 +127,9 @@
                             <div class="blog-image">
                                 <img src="{{ $post->thumbnail }}" alt="">
                                 <div class="blog-date">
-                                    <h5 class="{{ $post->content }}">14</h5>
-                                    <span>oct</span>
+                                    <h5 class="{{ $post->content }}">
+                                        {{ date("d",strtotime ($post->created_at) )}}</h5>
+                                    <span>{{ date("M",strtotime ($post->created_at) )}}</span>
                                 </div>
                             </div>
                             <div class="blog-content">
