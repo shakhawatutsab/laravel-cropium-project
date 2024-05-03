@@ -2,40 +2,31 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\BlogController;
+use App\Http\Controllers\DataController;
 
-Route::get('/', function () {
-    return view ('index');
-});
+Route::get('/', [ DataController ::class, 'index' ]);
 
-Route::get('/blog', function(){
+Route::get('/blog', [ BlogController::class, 'index' ]);
 
-    $posts = DB::table('posts')->paginate(5);
-    // return $posts;
-    return view('blog', [
-        'posts' => $posts
-    ]);
-
-
-});
-
-Route::get('/insert-data', function(){
-    $insert_data = DB::table('posts')->insert([
-        'firstname' => 'Shakhawat Hossain',
-        'lastname' => 'Utsab',
-        'email_address' => 'shakhawatutsab@gmail.com',
-        'content' => 'Lorem ipsum dolor sit amet etc',
-        'excerpt' => 'I am shakhawat hossain utsab. I am 22 years old'
-    ]);
-    if($insert_data){
-        echo "Data has been inserted to database";
-    }
-});
+// Route::get('/insert-data', function(){
+//     $insert_data = DB::table('posts')->insert([
+//         'firstname' => 'Shakhawat Hossain',
+//         'lastname' => 'Utsab',
+//         'email_address' => 'shakhawatutsab@gmail.com',
+//         'content' => 'Lorem ipsum dolor sit amet etc',
+//         'excerpt' => 'I am shakhawat hossain utsab. I am 22 years old'
+//     ]);
+//     if($insert_data){
+//         echo "Data has been inserted to database";
+//     }
+// });
 
 
 
-Route::get('/index', function () {
-    return view('index');
-});
+// Route::get('/index', function () {
+//     return view('index');
+// });
 
 // Route::get('/blog', function(){
 //     return view('blog');
