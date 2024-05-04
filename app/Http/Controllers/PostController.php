@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests;
+use App\Models\Post;
+use Illuminate\Support\Facades\DB;
 
 class PostController extends Controller
 {
@@ -12,15 +14,27 @@ class PostController extends Controller
      */
     public function index()
     {
-
+        return view('index');
     }
+
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function insert()
     {
-
+        $insert_data = DB::table('posts')->insert([
+            'firstname' => 'Shakhawat Hossain',
+            'lastname' => 'Utsab',
+            'email_address' => 'shakhawatutsab@gmail.com',
+            'content' => 'Lorem ipsum dolor sit amet etc',
+            'excerpt' => 'I am shakhawat hossain utsab. I am 22 years old',
+            'thumbnail' => "",
+            "title" => "this is title tag"
+        ]);
+        if($insert_data){
+            echo "Data has been inserted to database";
+        }
     }
 
     /**

@@ -8,11 +8,14 @@ use App\Models\Post;
 
 class BlogController extends Controller
 {
-    public function index() {
+    public function blog() {
 
         return view('blog', [
             'posts' => Post::all()
         ]);
 
+    }
+    public function blog_details() {
+        return view('blog-details');
     }
 }
